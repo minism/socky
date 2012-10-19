@@ -9,7 +9,9 @@
     "ect": "*",
     "express": "3.0.0rc5",
     "coffee-script": "*",
+    "connect": "*",
     "connect-assets": "*",
-    "less": "*"
+    "less": "*",
+    "socket.io": "*",
   }
 }

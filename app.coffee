@@ -1,10 +1,10 @@
 # Dependencies
-express = require 'express'
-http    = require 'http'
-path    = require 'path'
-ect     = require 'ect'
-
-routes  = require './routes'
+express     = require 'express'
+http        = require 'http'
+path        = require 'path'
+ect         = require 'ect'
+socketio    = require 'socket.io'
+parseCookie = require('connect').utils.parseCookie
 
 
 # Constants
@@ -13,7 +13,7 @@ VIEW_PATH    = path.join(__dirname, 'views')
 # STATIC_URL   ='/static'
 
 
-# Server configuration and middlware
+# Express server configuration and middlware
 app = express()
 app.configure ->
 
@@ -58,5 +58,19 @@ require('./routes')(app)
 
 
 # Run server
-http.createServer(app).listen app.get('port'), ->
+serv = http.createServer(app).listen app.get('port'), ->
     console.log "Server listening on port #{ app.get('port') }"
+
+
+# SocketIO configuration
+sio = socketio.listen(serv)
+sio.set 'authorization', (data, accept) ->
+    # Inject the express session id into socketio handshake
+    if data.headers.cookie
+        data.cookie = parseCookie(data.headers.cookie)
+        data.sessionid = data.cookie['express.sid']
+    else
+        return accept 'No cookie available, cant authorize', false
+    accept null, true
+
+
