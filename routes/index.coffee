@@ -1,4 +1,4 @@
-auth = require './auth'
+auth = require('../middleware').auth
 
 # Routes
 module.exports = (app) ->
