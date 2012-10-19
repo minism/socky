@@ -1,6 +1,34 @@
 <% extend 'base.html' %>
 
-<h2>Hello, <%= @title %></h2>
+<div class="row">
+
+  <div class="span10">
+    <div class="well" id="log" style="height: 400px; overflow-y: scroll">
+    </div>
+
+    <form class="form-inline" id="inputform">
+      <input type="text" id="input" style="width: 85%" placeholder="Say something...">
+      <button type="submit" class="btn">Send</button>
+    </form>
+  </div>
+
+  <div class="span2">
+    <ul class="nav nav-list">
+      <li class="nav-header">Users</li>
+
+      <% for user in @users : %>
+      <li><i class="icon-user"></i> <%- user %></li>
+      <% end %>
+
+    </ul>
+  </div>
+
+</div>
+
+
+<% block 'scripts' : %>
 
 <script src="/socket.io/socket.io.js"></script>
 <%- js('client') %>
+
+<% end %>

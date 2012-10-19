@@ -85,4 +85,4 @@ session_io = new SessionSockets(io, session_store, cookie_parser)
 
 
 # Load server code
-require('./app/server')(session_io)
+require('./app/server')(session_io, io.sockets)

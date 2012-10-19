@@ -8,7 +8,8 @@ module.exports = (app) ->
 
     # Application page
     app.get '/', auth, (req, res) ->
-        res.render 'index'
+        res.render 'index',
+            users: _.keys(app.store.users)
 
     # Login
     app.get '/login', (req, res) ->
