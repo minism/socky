@@ -8,7 +8,6 @@
   "dependencies": {
     "ect": "*",
     "express": "3.0.0rc5",
-    "eco": "*",
     "less-middleware": "*"
   }
 }
