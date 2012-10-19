@@ -8,6 +8,8 @@
   "dependencies": {
     "ect": "*",
     "express": "3.0.0rc5",
-    "less-middleware": "*"
+    "coffee-script": "*",
+    "connect-assets": "*",
+    "less": "*"
   }
 }

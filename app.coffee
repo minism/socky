@@ -9,8 +9,8 @@ routes = require './routes'
 
 # Constants
 VIEW_PATH    = path.join(__dirname, 'views')
-STATIC_PATH  = path.join(__dirname, 'static')
-STATIC_URL   ='/static'
+# STATIC_PATH  = path.join(__dirname, 'static')
+# STATIC_URL   ='/static'
 
 
 # Server configuration and middlware
@@ -27,12 +27,12 @@ app.configure ->
     # Use ect templates
     app.engine 'html', ect({root: VIEW_PATH}).render
 
-    # TODO
-    # Less compiling - NOT CURRENTLY WORKING
-    # app.use require('less-middleware')({src: STATIC_PATH})
+    # Coffeescript/LESS compilation and bundling
+    app.use app.routes
+    app.use require('connect-assets')({src: 'public'})
 
     # Static file serving
-    app.use STATIC_URL, express.static(STATIC_PATH)
+    # app.use STATIC_URL, express.static(STATIC_PATH)
        
     # Favicon url shortcut
     app.use express.favicon('')
