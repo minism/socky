@@ -1,20 +1,23 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
     <head>
         <%- css('bootstrap/bootstrap') %>
     </head>
 
     <body>
-        <div class="navbar">
+        <div class="navbar navbar-static-top">
             <div class="navbar-inner">
-                <span class="brand">socky</span>
-                <ul class="nav pull-right">
-                    <% if @userid : %>
-                    <li><a><strong><%- @userid %></strong></a></li>
-                    <li><a href="/logout">logout</a></li>
-                    <% else : %>
-                    <li><a href="/login">login</a></li>
-                    <% end %>
-                </ul>
+                <div class="container">
+                    <span class="brand">socky</span>
+                    <ul class="nav pull-right">
+                        <% if @userid : %>
+                        <li><a><strong><%- @userid %></strong></a></li>
+                        <li><a href="/logout">logout</a></li>
+                        <% else : %>
+                        <li><a href="/login">login</a></li>
+                        <% end %>
+                    </ul>
+                </div>
             </div>
         </div>
 
