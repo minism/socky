@@ -12,6 +12,6 @@
     "connect": "*",
     "connect-assets": "*",
     "less": "*",
-    "socket.io": "*",
+    "socket.io": "*"
   }
 }
