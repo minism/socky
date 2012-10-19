@@ -5,7 +5,8 @@ path             = require 'path'
 ect              = require 'ect'
 socketio         = require 'socket.io'
 SessionSockets   = require 'session.socket.io'
-parseCookie      = require('connect').utils.parseCookie
+
+middleware       = require './middleware'
 
 
 # Constants
@@ -58,6 +59,9 @@ app.configure ->
 
     # Session
     app.use express.session({ store: session_store })
+
+    # Application-wide middleware
+    app.use middleware.messages
 
 
 # Register application routes

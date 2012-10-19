@@ -15,6 +15,10 @@ module.exports = (app) ->
         if req.body.username
             req.session.userid = req.body.username
             return res.redirect '/'
+        else
+            req.session.messages.push
+                text: "Must enter a username"
+                type: "error"
         res.render 'login'
 
     # Logout
