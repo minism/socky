@@ -24,7 +24,6 @@ cookie_parser = express.cookieParser('SECRET')
 # Express server configuration and middlware
 app = express()
 app.configure ->
-
     # Server port
     app.set 'port', process.env.PORT or 3000
 
@@ -59,6 +58,10 @@ app.configure ->
 
     # Session
     app.use express.session({ store: session_store })
+
+    # DUMMY app storage, should eventually be a DB
+    app.store =
+        users: {}
 
     # Application-wide middleware
     app.use middleware.messages

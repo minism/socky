@@ -11,6 +11,7 @@
     "coffee-script": "*",
     "connect-assets": "*",
     "less": "*",
+    "lodash": "*",
     "socket.io": "*",
     "session.socket.io": "*",
     "validator": "*"

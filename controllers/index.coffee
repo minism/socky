@@ -1,3 +1,4 @@
+_     = require 'lodash'
 check = require('validator').check
 
 auth = require('../middleware').auth
@@ -7,8 +8,7 @@ module.exports = (app) ->
 
     # Application page
     app.get '/', auth, (req, res) ->
-        res.render 'index',
-            title: req.session.userid
+        res.render 'index'
 
     # Login
     app.get '/login', (req, res) ->
@@ -18,17 +18,20 @@ module.exports = (app) ->
         username = req.body.username or ''
         try
             check(username, "Username must be alphanumeric, 3-32 characters.").isAlphanumeric().len(3,32)
+            check(username, "That username already exists").notIn(_.keys(app.store.users))
         catch e
             req.error e.message
             return res.render 'login'
 
         # Authenticate
         req.session.userid = username
+        app.store.users[username] = true
         res.redirect '/'
 
     # Logout
     app.get '/logout', (req, res) ->
-        req.session.userid = null
+        delete app.store.users[req.session.userid]
+        delete req.session.userid
         res.redirect '/'
             
 
