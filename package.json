@@ -12,6 +12,7 @@
     "connect": "*",
     "connect-assets": "*",
     "less": "*",
-    "socket.io": "*"
+    "socket.io": "*",
+    "session.socket.io": "*"
   }
 }
