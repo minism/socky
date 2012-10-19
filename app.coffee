@@ -61,7 +61,7 @@ app.configure ->
 
 
 # Register application routes
-require('./routes')(app)
+require('./controllers')(app)
 
 
 # Boot HTTP server
