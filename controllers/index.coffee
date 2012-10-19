@@ -5,8 +5,7 @@ module.exports = (app) ->
 
     # Application page
     app.get '/', auth, (req, res) ->
-        res.render 'index',
-            title: req.session.userid
+        res.render 'index'
 
     # Login
     app.get '/login', (req, res) ->

@@ -5,3 +5,7 @@ module.exports = (io) ->
         if err
             return console.log "Unable to authenticate session: #{ err.error }"
 
+        socket.on 'mget', (data) ->
+            socket.broadcast.emit 'mpush', 
+                userid: session.userid
+                data: data

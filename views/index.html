@@ -1,6 +1,9 @@
 <% extend 'base.html' %>
 
-<h2>Hello, <%= @title %></h2>
+<h2>What up <%= @userid %></h2>
 
-<script src="/socket.io/socket.io.js"></script>
-<%- js('client') %>
+
+<% block 'scripts' : %>
+  <script src="/socket.io/socket.io.js"></script>
+  <%- js('client') %>
+<% end %>
