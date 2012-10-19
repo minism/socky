@@ -12,6 +12,7 @@
     "connect-assets": "*",
     "less": "*",
     "socket.io": "*",
-    "session.socket.io": "*"
+    "session.socket.io": "*",
+    "validator": "*"
   }
 }
