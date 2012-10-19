@@ -18,7 +18,10 @@ module.exports = (app) ->
             req.session.userid = req.body.username
             return res.redirect '/'
         else
-            req.flash "Must enter a username", "odsifj"
+            req.info "Some information"
+            req.warn "A warning!"
+            req.error "Critical error!!!"
+            req.success "Yay, success!"
         res.render 'login'
 
     # Logout
