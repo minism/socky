@@ -14,15 +14,17 @@ module.exports = (app) ->
     app.get '/login', (req, res) ->
         res.render 'login'
     app.post '/login', (req, res) ->
-        if req.body.username
-            req.session.userid = req.body.username
-            return res.redirect '/'
-        else
-            req.info "Some information"
-            req.warn "A warning!"
-            req.error "Critical error!!!"
-            req.success "Yay, success!"
-        res.render 'login'
+        # Form validation
+        username = req.body.username or ''
+        try
+            check(username, "Username must be alphanumeric, 3-32 characters.").isAlphanumeric().len(3,32)
+        catch e
+            req.error e.message
+            return res.render 'login'
+
+        # Authenticate
+        req.session.userid = username
+        res.redirect '/'
 
     # Logout
     app.get '/logout', (req, res) ->
