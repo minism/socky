@@ -1,6 +1,6 @@
-- Coffeescript: A better language than javascript
+- Coffeescript: A better language than javascript, used for server and client code
 - LESS: A better language than CSS
 - Express: For a simple webserver container and sessions
 - ECT: Server-side templates
 - Socket.io: The realtime server
-- Bootstrap: For styling
+- Bootstrap: Looks good, man
