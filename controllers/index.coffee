@@ -1,3 +1,5 @@
+check = require('validator').check
+
 auth = require('../middleware').auth
 
 # Routes
@@ -16,9 +18,7 @@ module.exports = (app) ->
             req.session.userid = req.body.username
             return res.redirect '/'
         else
-            req.session.messages.push
-                text: "Must enter a username"
-                type: "error"
+            req.flash "Must enter a username", "odsifj"
         res.render 'login'
 
     # Logout

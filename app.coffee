@@ -40,7 +40,7 @@ app.configure ->
     app.use require('connect-assets')({src: 'public'})
 
     # Static file serving
-    # app.use STATIC_URL, express.static(STATIC_PATH)
+    app.use '/public', express.static(path.join(__dirname, 'public'))
        
     # Favicon url shortcut
     app.use express.favicon('')
