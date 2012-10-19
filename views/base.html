@@ -4,6 +4,21 @@
     </head>
 
     <body>
+        <div class="navbar">
+            <div class="navbar-inner">
+                <span class="brand">socky</span>
+                <ul class="nav pull-right">
+                    <% if @userid : %>
+                    <li><a><strong><%- @userid %></strong></a></li>
+                    <li><a href="/logout">logout</a></li>
+                    <% else : %>
+                    <li><a href="/login">login</a></li>
+                    <% end %>
+                </ul>
+            </div>
+        </div>
+
+
         <div class="container">
             <% content %>
         </div>
