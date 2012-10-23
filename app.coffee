@@ -50,7 +50,7 @@ app.configure ->
     # Request body parsing (JSON, ...)
     app.use express.bodyParser()
 
-    # Allow controllers with methods PUT, DELETE, etc...
+    # Allow routes with methods PUT, DELETE, etc...
     app.use express.methodOverride()
 
     # Signed cookie parsing
@@ -68,7 +68,7 @@ app.configure ->
 
 
 # Register application routes
-require('./controllers')(app)
+require('./routes')(app)
 
 
 # Boot HTTP server
